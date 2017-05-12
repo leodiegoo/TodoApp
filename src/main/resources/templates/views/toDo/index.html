@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<section th:fragment="content" class="pure-g">
+    <div class="pure-u-1-1">
+        <table class="pure-table">
+            <thead>
+            <tr>
+                <th>Tarefa</th>
+                <th>Realizada</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="toDo : ${listToDo}">
+                <td th:text="${toDo.tarefa}"></td>
+                <td th:if="${toDo.completada}"><span style="color:green;">Realizada</span></td>
+                <td th:if="${!toDo.completada}"><span style="color:red;">Não realizada</span></td>
+                <td><a class="pure-button pure-button-success" th:href="@{/edit/} + ${toDo.id}">Editar</a>
+                    <a class="pure-button-error pure-button" th:href="@{/delete/} + ${toDo.id}">Excluir</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+</html>
